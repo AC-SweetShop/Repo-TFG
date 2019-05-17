@@ -1,0 +1,11 @@
+
+Para generar archivos pdf será necesario:
+1- Descargar el documento jupyter en formato HTML.
+2- Ejecutar el comando wkhtmltopdf [DOCUMENTO_HTML] [DOCUMENTO_PDF]*
+
+*Si no tienes instalado wkhtmltopdf puedes descargarlo con:
+sudo apt-get install wkhtmltopdf
+#OR
+yay wkhtmltopdf
+
+
