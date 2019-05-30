@@ -1,0 +1,9 @@
+.info{
+  float:left;
+  foreground-color:black;
+}
+
+.logo{
+  width:256px;
+  height:128px;
+}
