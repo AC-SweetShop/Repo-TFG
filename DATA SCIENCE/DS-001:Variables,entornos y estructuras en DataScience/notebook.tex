@@ -287,14 +287,14 @@
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-2019-05-17T16:17:35+02:00
+2019-05-30T20:57:56+02:00
 
 CPython 3.6.5
 IPython 6.4.0
 
 compiler   : GCC 7.2.0
 system     : Linux
-release    : 5.0.13-arch1-1-ARCH
+release    : 5.1.5-arch1-2-ARCH
 machine    : x86\_64
 processor  : 
 CPU cores  : 4
@@ -502,8 +502,8 @@ np.zeros
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}8}]:} array([[0.11009536, 0.12225862, 0.04750853],
-               [0.1812652 , 0.89785735, 0.32951389]])
+{\color{outcolor}Out[{\color{outcolor}8}]:} array([[0.14252823, 0.84562171, 0.23374288],
+               [0.64021973, 0.14124967, 0.93168794]])
 \end{Verbatim}
             
     \paragraph{Flujo de lectura y volcado en
@@ -885,77 +885,12 @@ posteriormente gracias al metodo \textbf{read\_clipboard}
 \end{Verbatim}
 
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-
-        ---------------------------------------------------------------------------
-
-        ParserError                               Traceback (most recent call last)
-
-        <ipython-input-31-773f8617e89a> in <module>()
-    ----> 1 df = pd.read\_clipboard()
-          2 df
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/clipboards.py in read\_clipboard(sep, **kwargs)
-         83         text = text.encode('utf-8')
-         84 
-    ---> 85     return read\_csv(StringIO(text), sep=sep, **kwargs)
-         86 
-         87 
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in parser\_f(filepath\_or\_buffer, sep, delimiter, header, names, index\_col, usecols, squeeze, prefix, mangle\_dupe\_cols, dtype, engine, converters, true\_values, false\_values, skipinitialspace, skiprows, skipfooter, nrows, na\_values, keep\_default\_na, na\_filter, verbose, skip\_blank\_lines, parse\_dates, infer\_datetime\_format, keep\_date\_col, date\_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, tupleize\_cols, error\_bad\_lines, warn\_bad\_lines, delim\_whitespace, low\_memory, memory\_map, float\_precision)
-        700                     skip\_blank\_lines=skip\_blank\_lines)
-        701 
-    --> 702         return \_read(filepath\_or\_buffer, kwds)
-        703 
-        704     parser\_f.\_\_name\_\_ = name
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in \_read(filepath\_or\_buffer, kwds)
-        433 
-        434     try:
-    --> 435         data = parser.read(nrows)
-        436     finally:
-        437         parser.close()
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in read(self, nrows)
-       1137     def read(self, nrows=None):
-       1138         nrows = \_validate\_integer('nrows', nrows)
-    -> 1139         ret = self.\_engine.read(nrows)
-       1140 
-       1141         \# May alter columns / col\_dict
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in read(self, rows)
-       2413             content = content[1:]
-       2414 
-    -> 2415         alldata = self.\_rows\_to\_cols(content)
-       2416         data = self.\_exclude\_implicit\_index(alldata)
-       2417 
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in \_rows\_to\_cols(self, content)
-       3064                     msg += '. ' + reason
-       3065 
-    -> 3066                 self.\_alert\_malformed(msg, row\_num + 1)
-       3067 
-       3068         \# see gh-13320
-
-
-        /opt/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py in \_alert\_malformed(self, msg, row\_num)
-       2833 
-       2834         if self.error\_bad\_lines:
-    -> 2835             raise ParserError(msg)
-       2836         elif self.warn\_bad\_lines:
-       2837             base = 'Skipping line \{row\_num\}: '.format(row\_num=row\_num)
-
-
-        ParserError: Expected 24 fields in line 32, saw 31. Error could possibly be due to quotes being ignored when a multi-char delimiter is used.
-
-    \end{Verbatim}
-
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}31}]:} Empty DataFrame
+         Columns: [http://localhost:8888/login?next=\%2Ftree]
+         Index: []
+\end{Verbatim}
+            
     \subsubsection{Exploración de
 DataFrames}\label{exploraciuxf3n-de-dataframes}
 
@@ -964,7 +899,7 @@ utilizaremos el dataframe de los resultado de las votaciones primarias
 en Estados Unidos.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{primary\PYZus{}results.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{df} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{primary\PYZus{}results.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -972,45 +907,105 @@ en Estados Unidos.
 utilizará el metodo \textbf{shape}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{shape}
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{df}\PY{o}{.}\PY{n}{shape}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} (24611, 8)
+\end{Verbatim}
+            
     Si queremos visualizar los cinco primeros registros para hacernos una
 idea de la composición del DataFrame sin tener que cargarlo entero en el
 notebook, se utilizará el metodo \textbf{head}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}34}]:}      state state\_abbreviation   county    fips     party        candidate  \textbackslash{}
+         0  Alabama                 AL  Autauga  1001.0  Democrat   Bernie Sanders   
+         1  Alabama                 AL  Autauga  1001.0  Democrat  Hillary Clinton   
+         2  Alabama                 AL  Baldwin  1003.0  Democrat   Bernie Sanders   
+         3  Alabama                 AL  Baldwin  1003.0  Democrat  Hillary Clinton   
+         4  Alabama                 AL  Barbour  1005.0  Democrat   Bernie Sanders   
+         
+            votes  fraction\_votes  
+         0    544           0.182  
+         1   2387           0.800  
+         2   2694           0.329  
+         3   5290           0.647  
+         4    222           0.078  
+\end{Verbatim}
+            
     Si por el contrario queremos ver los cinco últimos registros, se
 ejecutará el método \textbf{tail}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{df}\PY{o}{.}\PY{n}{tail}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}35}]:}          state state\_abbreviation          county        fips       party  \textbackslash{}
+         24606  Wyoming                 WY  Teton-Sublette  95600028.0  Republican   
+         24607  Wyoming                 WY   Uinta-Lincoln  95600027.0  Republican   
+         24608  Wyoming                 WY   Uinta-Lincoln  95600027.0  Republican   
+         24609  Wyoming                 WY   Uinta-Lincoln  95600027.0  Republican   
+         24610  Wyoming                 WY   Uinta-Lincoln  95600027.0  Republican   
+         
+                   candidate  votes  fraction\_votes  
+         24606      Ted Cruz      0             0.0  
+         24607  Donald Trump      0             0.0  
+         24608   John Kasich      0             0.0  
+         24609   Marco Rubio      0             0.0  
+         24610      Ted Cruz     53             1.0  
+\end{Verbatim}
+            
     Otro método muy valioso para el entendimiento del DataFrames es el
 \textbf{dtypes}. Este metodo nos da información sobre el tipo de datos
 que almacena cada columna.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{dtypes}
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{df}\PY{o}{.}\PY{n}{dtypes}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}36}]:} state                  object
+         state\_abbreviation     object
+         county                 object
+         fips                  float64
+         party                  object
+         candidate              object
+         votes                   int64
+         fraction\_votes        float64
+         dtype: object
+\end{Verbatim}
+            
     Aunque si lo que se quiere conseguir es obtener información precisa
 acerca de los registros del dataframe se podrá utilizar el metodo
 \textbf{describe}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{df}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}37}]:}                fips          votes  fraction\_votes
+         count  2.451100e+04   24611.000000    24611.000000
+         mean   2.667152e+07    2306.252773        0.304524
+         std    4.200978e+07    9861.183572        0.231401
+         min    1.001000e+03       0.000000        0.000000
+         25\%    2.109100e+04      68.000000        0.094000
+         50\%    4.208100e+04     358.000000        0.273000
+         75\%    9.090012e+07    1375.000000        0.479000
+         max    9.560004e+07  590502.000000        1.000000
+\end{Verbatim}
+            
     \subsubsection{Selección: Indexing y
 Slicing.}\label{selecciuxf3n-indexing-y-slicing.}
 
@@ -1022,111 +1017,273 @@ Todo dataframe contiene un \textbf{index} que aunque no es
 correspondiente a una columna, podemos hacer referencia a el.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}38}]:}      state state\_abbreviation   county    fips     party        candidate  \textbackslash{}
+         0  Alabama                 AL  Autauga  1001.0  Democrat   Bernie Sanders   
+         1  Alabama                 AL  Autauga  1001.0  Democrat  Hillary Clinton   
+         2  Alabama                 AL  Baldwin  1003.0  Democrat   Bernie Sanders   
+         3  Alabama                 AL  Baldwin  1003.0  Democrat  Hillary Clinton   
+         4  Alabama                 AL  Barbour  1005.0  Democrat   Bernie Sanders   
+         
+            votes  fraction\_votes  
+         0    544           0.182  
+         1   2387           0.800  
+         2   2694           0.329  
+         3   5290           0.647  
+         4    222           0.078  
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{}obtenemos información del index}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{index}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}seleccionamos el registro con index 0}
+         \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{}obtenemos información del index}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{index}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}seleccionamos el registro con index 0}
-        \PY{n}{df}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+RangeIndex(start=0, stop=24611, step=1)
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}39}]:} state                        Alabama
+         state\_abbreviation                AL
+         county                       Autauga
+         fips                            1001
+         party                       Democrat
+         candidate             Bernie Sanders
+         votes                            544
+         fraction\_votes                 0.182
+         Name: 0, dtype: object
 \end{Verbatim}
-
-
+            
     El index es un puntero que hace referencia al orden en el dataframe.
 Este puntero e puede cambiar a cualquier otra columna:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df2} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{df2} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{set\PYZus{}index}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{df2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:}            state state\_abbreviation    fips     party        candidate  votes  \textbackslash{}
+         county                                                                          
+         Autauga  Alabama                 AL  1001.0  Democrat   Bernie Sanders    544   
+         Autauga  Alabama                 AL  1001.0  Democrat  Hillary Clinton   2387   
+         Baldwin  Alabama                 AL  1003.0  Democrat   Bernie Sanders   2694   
+         Baldwin  Alabama                 AL  1003.0  Democrat  Hillary Clinton   5290   
+         Barbour  Alabama                 AL  1005.0  Democrat   Bernie Sanders    222   
+         
+                  fraction\_votes  
+         county                   
+         Autauga           0.182  
+         Autauga           0.800  
+         Baldwin           0.329  
+         Baldwin           0.647  
+         Barbour           0.078  
+\end{Verbatim}
+            
     Como podemos comprobar ahora la columna \emph{county} será referenciado
 como index.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df2}\PY{o}{.}\PY{n}{index}
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{df2}\PY{o}{.}\PY{n}{index}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}42}]:} Index(['Autauga', 'Autauga', 'Baldwin', 'Baldwin', 'Barbour', 'Barbour',
+                'Bibb', 'Bibb', 'Blount', 'Blount',
+                {\ldots}
+                'Sweetwater-Carbon', 'Sweetwater-Carbon', 'Teton-Sublette',
+                'Teton-Sublette', 'Teton-Sublette', 'Teton-Sublette', 'Uinta-Lincoln',
+                'Uinta-Lincoln', 'Uinta-Lincoln', 'Uinta-Lincoln'],
+               dtype='object', name='county', length=24611)
+\end{Verbatim}
+            
     Ahora que se ha cambiado el index, se puede seleccionar por condado:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df2}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Los Angeles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{df2}\PY{o}{.}\PY{n}{loc}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Los Angeles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}43}]:}                   state state\_abbreviation    fips       party  \textbackslash{}
+         county                                                           
+         Los Angeles  California                 CA  6037.0    Democrat   
+         Los Angeles  California                 CA  6037.0    Democrat   
+         Los Angeles  California                 CA  6037.0  Republican   
+         Los Angeles  California                 CA  6037.0  Republican   
+         Los Angeles  California                 CA  6037.0  Republican   
+         
+                            candidate   votes  fraction\_votes  
+         county                                                
+         Los Angeles   Bernie Sanders  434656           0.420  
+         Los Angeles  Hillary Clinton  590502           0.570  
+         Los Angeles     Donald Trump  179130           0.698  
+         Los Angeles      John Kasich   33559           0.131  
+         Los Angeles         Ted Cruz   30775           0.120  
+\end{Verbatim}
+            
     Con esto demostramos que \textbf{loc} selecciona por indice no por
 posición. Si lo que queremos por el contrario es seleccionar el número
 de fila en lugar del indice se deberá utilizar el método \textbf{iloc}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{df2}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}44}]:} state                        Alabama
+         state\_abbreviation                AL
+         fips                            1001
+         party                       Democrat
+         candidate             Bernie Sanders
+         votes                            544
+         fraction\_votes                 0.182
+         Name: Autauga, dtype: object
+\end{Verbatim}
+            
     Los dataframes soportan parametros de busqueda entre corchetes como los
 diccionarios de Python:
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{state}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{state}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} 0    Alabama
+         1    Alabama
+         2    Alabama
+         3    Alabama
+         4    Alabama
+         5    Alabama
+         6    Alabama
+         7    Alabama
+         8    Alabama
+         9    Alabama
+         Name: state, dtype: object
+\end{Verbatim}
+            
     Saber esto es muy util, ya que nos permite acceder al contenido de las
 columnas. En este ejemplo se introducirá una nueva columna y se asignará
 como valor para esa columna el numero 1.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{shape}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
-        \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}46}]:} \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{shape}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}46}]:}      state state\_abbreviation   county    fips     party        candidate  \textbackslash{}
+         0  Alabama                 AL  Autauga  1001.0  Democrat   Bernie Sanders   
+         1  Alabama                 AL  Autauga  1001.0  Democrat  Hillary Clinton   
+         2  Alabama                 AL  Baldwin  1003.0  Democrat   Bernie Sanders   
+         3  Alabama                 AL  Baldwin  1003.0  Democrat  Hillary Clinton   
+         4  Alabama                 AL  Barbour  1005.0  Democrat   Bernie Sanders   
+         
+            votes  fraction\_votes  shape  
+         0    544           0.182      1  
+         1   2387           0.800      1  
+         2   2694           0.329      1  
+         3   5290           0.647      1  
+         4    222           0.078      1  
+\end{Verbatim}
+            
     Si seleccionamos una columna, obtenemos una Serie, si seleccionamos dos
 o más, obtenemos un dataframe.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{county}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}47}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{county}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}47}]:} pandas.core.series.Series
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{candidate}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}48}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{df}\PY{p}{[}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{candidate}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}48}]:} pandas.core.frame.DataFrame
+\end{Verbatim}
+            
     Se puede además filtrar un dataframe de la misma forma que se filtra en
 numpy. Además estas condiciones se pueden concatenar utilizano el
 operador \textbf{\&}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{o}{.}\PY{n}{votes}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{590502}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{df}\PY{p}{[}\PY{n}{df}\PY{o}{.}\PY{n}{votes}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{l+m+mi}{590502}\PY{p}{]}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}49}]:}            state state\_abbreviation       county    fips     party  \textbackslash{}
+         1386  California                 CA  Los Angeles  6037.0  Democrat   
+         
+                     candidate   votes  fraction\_votes  shape  
+         1386  Hillary Clinton  590502            0.57      1  
+\end{Verbatim}
+            
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{county}\PY{o}{==}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Manhattan}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{party}\PY{o}{==}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Democrat}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}50}]:} \PY{n}{df}\PY{p}{[}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{county}\PY{o}{==}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Manhattan}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{o}{\PYZam{}} \PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{party}\PY{o}{==}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Democrat}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{]}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}50}]:}           state state\_abbreviation     county     fips     party  \textbackslash{}
+         15011  New York                 NY  Manhattan  36061.0  Democrat   
+         15012  New York                 NY  Manhattan  36061.0  Democrat   
+         
+                      candidate   votes  fraction\_votes  shape  
+         15011   Bernie Sanders   90227           0.337      1  
+         15012  Hillary Clinton  177496           0.663      1  
+\end{Verbatim}
+            
     Otro metodo muy utilizado para la selección de registros de un dataframe
 es el método \textbf{query} el cual nos permite hacer referencias al
 contenido de otras variables mediante el operador **@**.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{county} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Manhattan}\PY{l+s+s2}{\PYZdq{}}
-        \PY{n}{df}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county==@county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}51}]:} \PY{n}{county} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Manhattan}\PY{l+s+s2}{\PYZdq{}}
+         \PY{n}{df}\PY{o}{.}\PY{n}{query}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{county==@county}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}51}]:}           state state\_abbreviation     county     fips       party  \textbackslash{}
+         15011  New York                 NY  Manhattan  36061.0    Democrat   
+         15012  New York                 NY  Manhattan  36061.0    Democrat   
+         15162  New York                 NY  Manhattan  36061.0  Republican   
+         15163  New York                 NY  Manhattan  36061.0  Republican   
+         15164  New York                 NY  Manhattan  36061.0  Republican   
+         
+                      candidate   votes  fraction\_votes  shape  
+         15011   Bernie Sanders   90227           0.337      1  
+         15012  Hillary Clinton  177496           0.663      1  
+         15162     Donald Trump   10393           0.418      1  
+         15163      John Kasich   11251           0.452      1  
+         15164         Ted Cruz    3243           0.130      1  
+\end{Verbatim}
+            
     \subsection{Procesado de Dataframes.}\label{procesado-de-dataframes.}
 
 En este apartado se observarán los métodos más relevantes para procesar
@@ -1138,11 +1295,27 @@ parámetro. Además como segundo parámetro se le puede ordenar que los
 ordene ascendente o descendentemente.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df\PYZus{}sorted} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
-        \PY{n}{df\PYZus{}sorted}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{df\PYZus{}sorted} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+         \PY{n}{df\PYZus{}sorted}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}52}]:}            state state\_abbreviation        county        fips     party  \textbackslash{}
+         1386  California                 CA   Los Angeles      6037.0  Democrat   
+         1385  California                 CA   Los Angeles      6037.0  Democrat   
+         4451    Illinois                 IL       Chicago  91700103.0  Democrat   
+         4450    Illinois                 IL       Chicago  91700103.0  Democrat   
+         4463    Illinois                 IL  Cook Suburbs  91700104.0  Democrat   
+         
+                     candidate   votes  fraction\_votes  shape  
+         1386  Hillary Clinton  590502           0.570      1  
+         1385   Bernie Sanders  434656           0.420      1  
+         4451  Hillary Clinton  366954           0.536      1  
+         4450   Bernie Sanders  311225           0.454      1  
+         4463  Hillary Clinton  249217           0.536      1  
+\end{Verbatim}
+            
     Un método que nos permite agrupar columnas es el método
 \textbf{groupby}. Utilizaremos este método para agrupar las columnas
 referentes al estado y la referente al partido político del actual
@@ -1153,23 +1326,105 @@ Con esta operación obtendremos una lista con los resultados de voto por
 partido en los distintos estados de Estados Unidos.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{state}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{party}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{df}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{state}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{party}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{votes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}53}]:} state           party     
+         Alabama         Democrat       386327
+                         Republican     837632
+         Alaska          Democrat          539
+                         Republican      21930
+         Arizona         Democrat       399097
+                         Republican     435103
+         Arkansas        Democrat       209448
+                         Republican     396523
+         California      Democrat      3442623
+                         Republican    1495574
+         Colorado        Democrat       121184
+         Connecticut     Democrat       322485
+                         Republican     208817
+         Delaware        Democrat        92609
+                         Republican      67807
+         Florida         Democrat      1664003
+                         Republican    2276926
+         Georgia         Democrat       757340
+                         Republican    1275601
+         Hawaii          Democrat        33658
+                         Republican      13228
+         Idaho           Democrat        23705
+                         Republican     215284
+         Illinois        Democrat      1987834
+                         Republican    1384703
+         Indiana         Democrat       638638
+                         Republican    1080653
+         Iowa            Democrat       139980
+                         Republican     186724
+         Kansas          Democrat        39043
+                                        {\ldots}   
+         Oklahoma        Democrat       313392
+                         Republican     452731
+         Oregon          Democrat       572485
+                         Republican     361490
+         Pennsylvania    Democrat      1638644
+                         Republican    1537696
+         Rhode Island    Democrat       119213
+                         Republican      60381
+         South Carolina  Democrat       367491
+                         Republican     737917
+         South Dakota    Democrat        53004
+                         Republican      66877
+         Tennessee       Democrat       365637
+                         Republican     834939
+         Texas           Democrat      1410641
+                         Republican    2737248
+         Utah            Democrat        76999
+                         Republican     177204
+         Vermont         Democrat       134198
+                         Republican      58762
+         Virginia        Democrat       778865
+                         Republican    1012807
+         Washington      Democrat        26299
+                         Republican     510851
+         West Virginia   Democrat       210214
+                         Republican     188138
+         Wisconsin       Democrat      1000703
+                         Republican    1072699
+         Wyoming         Democrat          280
+                         Republican        903
+         Name: votes, Length: 95, dtype: int64
+\end{Verbatim}
+            
     Mediante la función \textbf{apply} al que se puede agregar valores a una
 columna a través de los resultados de una función
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{}mediante esta función obtenemos la primera letra de cada estado}
-        \PY{n}{df}\PY{o}{.}\PY{n}{state\PYZus{}abbreviation}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{s}\PY{p}{:}\PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-        
-        \PY{c+c1}{\PYZsh{}si esto lo agregamos a una columa podemos volcarlo al DataFrame}
-        \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{letra\PYZus{}estado}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{state\PYZus{}abbreviation}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{s}\PY{p}{:} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-        \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}54}]:} \PY{c+c1}{\PYZsh{}mediante esta función obtenemos la primera letra de cada estado}
+         \PY{n}{df}\PY{o}{.}\PY{n}{state\PYZus{}abbreviation}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{s}\PY{p}{:}\PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{}si esto lo agregamos a una columa podemos volcarlo al DataFrame}
+         \PY{n}{df}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{letra\PYZus{}estado}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{df}\PY{o}{.}\PY{n}{state\PYZus{}abbreviation}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{s}\PY{p}{:} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{n}{df}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:}      state state\_abbreviation   county    fips     party        candidate  \textbackslash{}
+         0  Alabama                 AL  Autauga  1001.0  Democrat   Bernie Sanders   
+         1  Alabama                 AL  Autauga  1001.0  Democrat  Hillary Clinton   
+         2  Alabama                 AL  Baldwin  1003.0  Democrat   Bernie Sanders   
+         3  Alabama                 AL  Baldwin  1003.0  Democrat  Hillary Clinton   
+         4  Alabama                 AL  Barbour  1005.0  Democrat   Bernie Sanders   
+         
+            votes  fraction\_votes  shape letra\_estado  
+         0    544           0.182      1            A  
+         1   2387           0.800      1            A  
+         2   2694           0.329      1            A  
+         3   5290           0.647      1            A  
+         4    222           0.078      1            A  
+\end{Verbatim}
+            
     \subsubsection{Exportar/Importar DataFrame a
 excel}\label{exportarimportar-dataframe-a-excel}
 
@@ -1184,20 +1439,26 @@ importar de excel, pero para ello será necesario instalar el paquete
 \end{Shaded}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{rick\PYZus{}and\PYZus{}morty}\PY{o}{.}\PY{n}{to\PYZus{}excel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rick\PYZus{}y\PYZus{}morty.xls}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sheet\PYZus{}name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{personajes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{rick\PYZus{}and\PYZus{}morty}\PY{o}{.}\PY{n}{to\PYZus{}excel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rick\PYZus{}y\PYZus{}morty.xls}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sheet\PYZus{}name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{personajes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{rick\PYZus{}morty2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}excel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rick\PYZus{}y\PYZus{}morty.xls}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sheet\PYZus{}name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{personajes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{rick\PYZus{}morty2} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}excel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rick\PYZus{}y\PYZus{}morty.xls}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{sheet\PYZus{}name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{personajes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{n}{rick\PYZus{}morty2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{rick\PYZus{}morty2}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}57}]:}    Unnamed: 0 nombre apellidos  edad
+         0           0   Rick   Sanchez    60
+         1           1  Morty     Smith    14
+\end{Verbatim}
+            
 
     % Add a bibliography block to the postdoc
     
