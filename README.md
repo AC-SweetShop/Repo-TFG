@@ -20,6 +20,39 @@ de Grado Superior derivado de la **Ley Orgánica 2/2006 de 3 de mayo, de Educaci
 y se realizó simultaneamente a la realización del **módulo profesional de FCT.**
 
 ___
+## Estructura del Repositorio.
+1. **Directorios de documentación:**
+  - *DATA SCIENCE*.  
+  En este directorio se incluirá todos los documentos Jupyter de
+  la parte de Data Science.
+    - Variables, entornos y Estructuras de datos. implementación de librerías Numpy y Pandas.
+    - Estadísticos descriptivos para el análisis de datos.
+    - Visualización de datos con MatplotLib, Seaborn y BokehJS.
+    - Análisis de Datos.
+  - *MACHINE LEARNING*.  
+  En este directorio se incluirá todos los documentos Jupyter
+  de la parte de Machine Learning.
+    - Introducción a machine learning ¿Que es machine learning?
+    - Teoría e implementación Regresión Lineal.
+    - Evaluación de modelos de regresión lineal.
+    - Separación de datos de test y datos de entrenamiento. Validación Cruzada.
+    - Regularización de modelos.
+    - Regresión Logística.
+    - Evaluación de modelos de regresión logística.
+    - Procesado de variables con SkLearn.
+2. **Directorios de Ficheros:**
+  - *HTML FILES*.  
+  En este directorio se encuentran generados los documentos HTML a partir de la
+  documentación Jupyter.
+  - *PDF FILES*.  
+  En este directorio se encuentran generados los documentos pdf a partir de los
+  ficheros HTML.
+3. **Directorio de Recursos y Scripts:**  
+  En estos directorios se almacenan los recursos utilizados en la documentación
+  y se añadirán futuros scripts para exportación de la documentación.
+
+
+___
 
 ## Recursos Complementarios
 Además de los recursos incluidos en el repositorio, para la Defensa del proyecto se utilizará el material incluido en la wiki del repositorio y una presentación que ayuda a aclarar el contenido del proyecto.
